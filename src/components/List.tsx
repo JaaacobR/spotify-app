@@ -25,11 +25,11 @@ type ListItemProps = {
   onPress: () => void;
 };
 
-export const ListItem = ({
+export const ListItem: React.FC<ListItemProps> = ({
   title,
   subtitle,
   onPress = () => null,
-}: ListItemProps) => {
+}) => {
   const rowStyles = [styles.row];
 
   return (
