@@ -1,7 +1,15 @@
 module.exports = {
-  bracketSpacing: true,
-  jsxBracketSameLine: false,
-  singleQuote: true,
+  bracketSameLine: true,
+  printWidth: 80,
+  tabWidth: 2,
   trailingComma: 'all',
-  arrowParens: 'avoid',
+  singleQuote: true,
+  semi: true,
+  importOrder: [
+    '^(react|react-native)$',
+    '<THIRD_PARTY_MODULES>',
+    '^@core/(.*)$',
+    '^[./]',
+  ],
+  importOrderSeparation: true,
 };

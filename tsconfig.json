@@ -1,6 +1,14 @@
 {
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
-  },
-  "extends": "expo/tsconfig.base"
+    "strict": true,
+    "baseUrl": "./",
+    "rootDir": "./",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noErrorTruncation": true,
+    "paths": {
+      "@core/*": ["src/*"]
+    }
+  }
 }
