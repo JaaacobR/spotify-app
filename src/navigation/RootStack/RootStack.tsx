@@ -11,7 +11,11 @@ const MainStack = createStackNavigator<MainStackParams>();
 
 const RootStack = () => (
   <MainStack.Navigator>
-    <MainStack.Screen name="LogIn" component={LogIn} />
+    <MainStack.Screen
+      name="LogIn"
+      options={{ headerShown: false }}
+      component={LogIn}
+    />
   </MainStack.Navigator>
 );
 
