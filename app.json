@@ -3,6 +3,7 @@
     "name": "spotify-app",
     "slug": "spotify-app",
     "version": "1.0.0",
+    "scheme": "spotify-app",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -27,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d3a5ece2-c921-4d8c-b138-0f2ce7de9f4a"
+      }
+    },
+    "owner": "jryszka"
   }
 }
