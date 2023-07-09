@@ -11,6 +11,8 @@ import {
 } from 'expo-auth-session';
 import { OAUTH_CLIENT_ID } from '@env';
 
+import useApi from './useApi';
+
 WebBrowser.maybeCompleteAuthSession();
 
 const discovery = {
@@ -19,6 +21,7 @@ const discovery = {
 };
 
 const useSpotifyOAuth2: UseSpotifyOAuth2 = () => {
+  const api = useApi();
   const [_request, response, promptAsync] = useAuthRequest(
     {
       responseType: ResponseType.Token,
@@ -35,7 +38,7 @@ const useSpotifyOAuth2: UseSpotifyOAuth2 = () => {
   useEffect(() => {
     if (response?.type === 'success') {
       const { access_token } = response.params;
-      console.log(access_token);
+      api.setAccesToken(access_token);
     }
   }, [response]);
 
