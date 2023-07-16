@@ -1,8 +1,9 @@
-import Api from '@core/services/Api';
+import { useContext } from 'react';
 
-const api = new Api();
+import { ApiContext } from '@core/providers/ApiProvider';
 
 const useApi = () => {
+  const api = useContext(ApiContext);
   return api;
 };
 

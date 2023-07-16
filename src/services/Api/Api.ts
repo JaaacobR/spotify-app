@@ -33,6 +33,13 @@ class ApiService {
     }
   }
 
+  async getUserTop(): Promise<void> {
+    try {
+      const res = await this.axios.get(this.buildUrl(`me/top/tracks`));
+      console.log(JSON.stringify(res.data));
+    } catch (ex) {}
+  }
+
   private buildUrl(path: string): string {
     return `/${path}`;
   }
