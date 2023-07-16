@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
+import { GetUserTopTracksResponse, TrackObject } from './types';
 
 class ApiService {
   accessToken?: string;
@@ -33,11 +34,15 @@ class ApiService {
     }
   }
 
-  async getUserTop(): Promise<void> {
+  async getUserTop(): Promise<TrackObject[] | undefined> {
     try {
-      const res = await this.axios.get(this.buildUrl(`me/top/tracks`));
-      console.log(JSON.stringify(res.data));
-    } catch (ex) {}
+      const res = await this.axios.get<GetUserTopTracksResponse>(
+        this.buildUrl(`me/top/tracks`),
+      );
+      return res.data.items;
+    } catch (ex) {
+      throw new Error('err: ' + ex);
+    }
   }
 
   private buildUrl(path: string): string {
