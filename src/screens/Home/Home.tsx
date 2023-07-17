@@ -9,6 +9,7 @@ import Screen from '@core/components/Screen';
 import { ArtistObject, TrackObject } from '@core/services/Api/types';
 
 import { HomeTrackCard } from './HomeTrackCard';
+import ArtistCard from '@core/components/ArtistCard/ArtistCard';
 
 const Home = () => {
   const api = useApi();
@@ -39,6 +40,10 @@ const Home = () => {
     return <HomeTrackCard item={item.item} />;
   };
 
+  const renderArtistsItem = (item: { item: ArtistObject }) => {
+    return <ArtistCard item={item.item} />;
+  };
+
   return (
     <LinearGradient colors={['#131313', '#010101']} style={{ flex: 1 }}>
       <Screen>
@@ -47,7 +52,7 @@ const Home = () => {
         ) : (
           <ScrollView contentContainerStyle={{ flex: 1 }}>
             <Text c="white" fs="xl">
-              Witaj!!
+              Welcome!!
             </Text>
             <FlatList
               scrollEnabled={false}
@@ -57,7 +62,15 @@ const Home = () => {
               numColumns={2}
               contentContainerStyle={{ flex: 1 }}
             />
-            {/* <FlatList data={topArtist} horizontal renderItem={render} /> */}
+            <Text c="white" fs="xl">
+              Favourite artist
+            </Text>
+            <FlatList
+              data={topArtist}
+              horizontal
+              renderItem={renderArtistsItem}
+              showsHorizontalScrollIndicator={false}
+            />
           </ScrollView>
         )}
       </Screen>

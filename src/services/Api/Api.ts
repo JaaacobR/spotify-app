@@ -42,7 +42,7 @@ class ApiService {
   async getUserTop(): Promise<TrackObject[] | undefined> {
     try {
       const res = await this.axios.get<GetUserTopTracksResponse>(
-        this.buildUrl(`me/top/tracks?limit=6&time_range=long_term`),
+        this.buildUrl(`me/top/tracks?limit=6`),
       );
       return res.data.items;
     } catch (ex) {

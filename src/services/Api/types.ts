@@ -15,6 +15,7 @@ export interface ArtistObject {
   name: string;
   type: 'artist';
   uri: string;
+  images: ImageObject[];
 }
 
 interface AlbumObject {
