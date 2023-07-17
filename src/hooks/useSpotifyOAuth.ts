@@ -26,7 +26,7 @@ const useSpotifyOAuth2: UseSpotifyOAuth2 = () => {
     {
       responseType: ResponseType.Token,
       clientId: OAUTH_CLIENT_ID,
-      scopes: ['user-read-email', 'playlist-modify-public'],
+      scopes: ['user-read-email', 'playlist-modify-public', 'user-top-read'],
       usePKCE: false,
       redirectUri: makeRedirectUri({
         scheme: 'spotify-app',

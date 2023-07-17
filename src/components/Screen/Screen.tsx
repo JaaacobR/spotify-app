@@ -15,13 +15,7 @@ const Screen: React.FC<ScreenProps> = ({
   const theme = useTheme();
 
   return (
-    <SafeAreaView
-      edges={edges}
-      style={[
-        styles.constainer,
-        { backgroundColor: theme.colors.background },
-        style,
-      ]}>
+    <SafeAreaView edges={edges} style={[styles.constainer, style]}>
       {children}
     </SafeAreaView>
   );
@@ -30,8 +24,7 @@ const Screen: React.FC<ScreenProps> = ({
 const styles = StyleSheet.create({
   constainer: {
     flex: 1,
-    padding: 16,
-    position: 'relative',
+    padding: 10,
   },
 });
 

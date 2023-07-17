@@ -1,4 +1,10 @@
 import axios, { AxiosInstance } from 'axios';
+import {
+  ArtistObject,
+  GetUserTopTracksResponse,
+  GetUserTopArtistsResponse,
+  TrackObject,
+} from './types';
 
 class ApiService {
   accessToken?: string;
@@ -30,6 +36,28 @@ class ApiService {
       console.log(JSON.stringify(res.data.tracks.items[0].name));
     } catch (ex) {
       console.log(ex);
+    }
+  }
+
+  async getUserTop(): Promise<TrackObject[] | undefined> {
+    try {
+      const res = await this.axios.get<GetUserTopTracksResponse>(
+        this.buildUrl(`me/top/tracks?limit=6`),
+      );
+      return res.data.items;
+    } catch (ex) {
+      throw new Error('err: ' + ex);
+    }
+  }
+
+  async getUserTopArtist(): Promise<ArtistObject[] | undefined> {
+    try {
+      const res = await this.axios.get<GetUserTopArtistsResponse>(
+        this.buildUrl(`me/top/artists?limit=8`),
+      );
+      return res.data.items;
+    } catch (ex) {
+      throw new Error('err: ' + ex);
     }
   }
 
