@@ -45,14 +45,14 @@ const Home = () => {
   };
 
   return (
-    <LinearGradient colors={['#131313', '#010101']} style={{ flex: 1 }}>
+    <LinearGradient colors={['#333333', '#010101']} style={{ flex: 1 }}>
       <Screen>
         {isLoading ? (
           <ActivityIndicator />
         ) : (
           <ScrollView contentContainerStyle={{ flex: 1 }}>
-            <Text c="white" fs="xl">
-              Welcome!!
+            <Text c="white" fs="xl" fw="bold">
+              Welcome!
             </Text>
             <FlatList
               scrollEnabled={false}
@@ -62,8 +62,8 @@ const Home = () => {
               numColumns={2}
               contentContainerStyle={{ flex: 1 }}
             />
-            <Text c="white" fs="xl">
-              Favourite artist
+            <Text c="white" fs="xl" fw="bold">
+              Favourite artists
             </Text>
             <FlatList
               data={topArtist}

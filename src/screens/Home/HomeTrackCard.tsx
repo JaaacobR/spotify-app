@@ -1,22 +1,29 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import Text from '@core/components/Text';
 import { HomeTrackCardProps } from './types';
+import { MainStackParams } from '@core/navigation/RootStack/RootStack';
 
 export const HomeTrackCard: React.FC<HomeTrackCardProps> = ({ item }) => {
+  const navigation = useNavigation<StackNavigationProp<MainStackParams>>();
+  const handlePress = () => {
+    navigation.navigate('Album', { id: item.album.id });
+  };
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
+      <TouchableOpacity onPress={handlePress} style={styles.content}>
         <Image
           style={styles.image}
           source={{ uri: item.album.images[0].url }}
         />
         <View style={styles.albumName}>
-          <Text c="black" numberOfLines={1}>
+          <Text c="white" numberOfLines={1}>
             {item.album.name}
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -33,7 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 5,
-    backgroundColor: 'rgba(255,255,255,0.5)',
+    backgroundColor: 'rgba(80,80,80,0.5)',
     borderRadius: 5,
     overflow: 'hidden',
   },
