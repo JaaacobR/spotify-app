@@ -64,6 +64,26 @@ class ApiService {
     }
   }
 
+  async startPlayback(uri: string, track_number: number): Promise<void> {
+    try {
+      const device = await this.axios.get(this.buildUrl('me/player/devices'));
+      console.log(device.data);
+      await this.axios.put(
+        this.buildUrl(
+          'me/player/play?device_id=e84c3af7990ad526f31dfabdda45938b2f32902a',
+        ),
+        {
+          context_uri: uri,
+          offset: {
+            position: track_number - 1,
+          },
+        },
+      );
+    } catch (ex) {
+      console.log('err: ' + ex);
+    }
+  }
+
   private buildUrl(path: string): string {
     return `/${path}`;
   }
