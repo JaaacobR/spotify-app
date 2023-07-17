@@ -18,7 +18,7 @@ export interface ArtistObject {
   images: ImageObject[];
 }
 
-interface AlbumObject {
+interface SimplifiedAlbumObject {
   album_group?: string;
   album_type: string;
   artists: ArtistObject[];
@@ -36,7 +36,7 @@ interface AlbumObject {
 }
 
 export interface TrackObject {
-  album: AlbumObject;
+  album: SimplifiedAlbumObject;
   artists: ArtistObject[];
   available_markets: string[];
   disc_number: number;
@@ -71,4 +71,30 @@ export interface GetUserTopTracksResponse {
   offset: number;
   previous: string | null;
   next: string | null;
+}
+
+export interface AlbumObject {
+  album_type: string;
+  artists: ArtistObject[];
+  available_markets: string[];
+  external_urls: ExternalUrlObject;
+  genres: string[];
+  href: string;
+  id: string;
+  images: ImageObject[];
+  label: string;
+  name: string;
+  popularity: number;
+  release_date: string;
+  release_date_precision: string;
+  tracks: {
+    items: TrackObject[];
+    limit: number;
+    next: string | null;
+    offset: number;
+    previous: string | null;
+    total: number;
+  };
+  type: 'album';
+  uri: string;
 }

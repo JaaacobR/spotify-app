@@ -4,6 +4,7 @@ import {
   GetUserTopTracksResponse,
   GetUserTopArtistsResponse,
   TrackObject,
+  AlbumObject,
 } from './types';
 
 class ApiService {
@@ -29,11 +30,13 @@ class ApiService {
     ] = `Bearer ${accessToken}`;
   }
 
-  async getAlbum(albumId: string): Promise<void> {
+  async getAlbum(albumId: string): Promise<AlbumObject | undefined> {
     try {
       console.log(this.axios.getUri());
-      const res = await this.axios.get(this.buildUrl(`albums/${albumId}`));
-      console.log(JSON.stringify(res.data.tracks.items[0].name));
+      const res = await this.axios.get<AlbumObject>(
+        this.buildUrl(`albums/${albumId}`),
+      );
+      return res.data;
     } catch (ex) {
       console.log(ex);
     }

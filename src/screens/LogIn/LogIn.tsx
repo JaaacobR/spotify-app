@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import Screen from '@core/components/Screen';
 import useApi from '@core/hooks/useApi';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const LogIn: React.FC = () => {
   const navigation = useNavigation();
@@ -21,15 +22,13 @@ const LogIn: React.FC = () => {
   }, [api.accessToken]);
 
   return (
-    <Screen>
-      <View>
-        <Button onPress={() => api.getAlbum('4aawyAB9vmqN3uQ7FjRGTy')}>
-          get
-        </Button>
-        <Text ta="center">AAA</Text>
-        <Button onPress={promptAsync}>LogIn</Button>
-      </View>
-    </Screen>
+    <LinearGradient colors={['#131313', '#010101']} style={{ flex: 1 }}>
+      <Screen>
+        <View>
+          <Button onPress={promptAsync}>LogIn</Button>
+        </View>
+      </Screen>
+    </LinearGradient>
   );
 };
 
