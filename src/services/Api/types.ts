@@ -1,13 +1,3 @@
-interface PagingObject<T> {
-  href: string;
-  items: T[];
-  limit: number;
-  next: string | null;
-  offset: number;
-  previous: string | null;
-  total: number;
-}
-
 interface ExternalUrlObject {
   spotify: string;
 }
@@ -18,7 +8,7 @@ interface ImageObject {
   width: number | null;
 }
 
-interface ArtistObject {
+export interface ArtistObject {
   external_urls: ExternalUrlObject;
   href: string;
   id: string;

@@ -23,11 +23,11 @@ const LogIn: React.FC = () => {
   return (
     <Screen>
       <View>
-        <Text ta="center">AAA</Text>
-        <Button onPress={promptAsync}>LogIn</Button>
         <Button onPress={() => api.getAlbum('4aawyAB9vmqN3uQ7FjRGTy')}>
           get
         </Button>
+        <Text ta="center">AAA</Text>
+        <Button onPress={promptAsync}>LogIn</Button>
       </View>
     </Screen>
   );

@@ -1,5 +1,10 @@
 import axios, { AxiosInstance } from 'axios';
-import { GetUserTopTracksResponse, TrackObject } from './types';
+import {
+  ArtistObject,
+  GetUserTopTracksResponse,
+  GetUserTopArtistsResponse,
+  TrackObject,
+} from './types';
 
 class ApiService {
   accessToken?: string;
@@ -37,7 +42,18 @@ class ApiService {
   async getUserTop(): Promise<TrackObject[] | undefined> {
     try {
       const res = await this.axios.get<GetUserTopTracksResponse>(
-        this.buildUrl(`me/top/tracks`),
+        this.buildUrl(`me/top/tracks?limit=6&time_range=long_term`),
+      );
+      return res.data.items;
+    } catch (ex) {
+      throw new Error('err: ' + ex);
+    }
+  }
+
+  async getUserTopArtist(): Promise<ArtistObject[] | undefined> {
+    try {
+      const res = await this.axios.get<GetUserTopArtistsResponse>(
+        this.buildUrl(`me/top/artists?limit=8`),
       );
       return res.data.items;
     } catch (ex) {
