@@ -94,6 +94,15 @@ class ApiService {
     } catch (ex) {}
   }
 
+  async getArtistTopTracks(id: string): Promise<TrackObject[] | undefined> {
+    try {
+      const res = await this.axios.get<{ tracks: TrackObject[] }>(
+        this.buildUrl(`artists/${id}/top-tracks?market=PL`),
+      );
+      return res.data.tracks;
+    } catch (ex) {}
+  }
+
   private buildUrl(path: string): string {
     return `/${path}`;
   }
