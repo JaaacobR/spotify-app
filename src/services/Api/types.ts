@@ -8,7 +8,7 @@ interface ImageObject {
   width: number | null;
 }
 
-export interface ArtistObject {
+export interface SimplifiedArtistObject {
   external_urls: ExternalUrlObject;
   href: string;
   id: string;
@@ -16,6 +16,24 @@ export interface ArtistObject {
   type: 'artist';
   uri: string;
   images: ImageObject[];
+}
+
+interface FollowersObject {
+  href: string | null;
+  total: number;
+}
+
+export interface ArtistObject {
+  external_urls: ExternalUrlObject;
+  followers: FollowersObject;
+  genres: string[];
+  href: string;
+  id: string;
+  images: ImageObject[];
+  name: string;
+  popularity: number;
+  type: 'artist';
+  uri: string;
 }
 
 interface SimplifiedAlbumObject {

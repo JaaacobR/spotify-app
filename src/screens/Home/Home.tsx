@@ -6,7 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import Text from '@core/components/Text';
 import Screen from '@core/components/Screen';
-import { ArtistObject, TrackObject } from '@core/services/Api/types';
+import { SimplifiedArtistObject, TrackObject } from '@core/services/Api/types';
 
 import { HomeTrackCard } from './HomeTrackCard';
 import ArtistCard from '@core/components/ArtistCard/ArtistCard';
@@ -16,7 +16,7 @@ const Home = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [topTracks, setTopTracks] = useState<TrackObject[]>([]);
-  const [topArtist, setTopArtist] = useState<ArtistObject[]>([]);
+  const [topArtist, setTopArtist] = useState<SimplifiedArtistObject[]>([]);
 
   const getTopTracks = async () => {
     const [topTracks, topArtist] = await Promise.all([
@@ -40,7 +40,7 @@ const Home = () => {
     return <HomeTrackCard item={item.item} />;
   };
 
-  const renderArtistsItem = (item: { item: ArtistObject }) => {
+  const renderArtistsItem = (item: { item: SimplifiedArtistObject }) => {
     return <ArtistCard item={item.item} />;
   };
 

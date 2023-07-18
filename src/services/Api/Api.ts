@@ -1,10 +1,11 @@
 import axios, { AxiosInstance } from 'axios';
 import {
-  ArtistObject,
+  SimplifiedArtistObject,
   GetUserTopTracksResponse,
   GetUserTopArtistsResponse,
   TrackObject,
   AlbumObject,
+  ArtistObject,
 } from './types';
 
 class ApiService {
@@ -53,7 +54,7 @@ class ApiService {
     }
   }
 
-  async getUserTopArtist(): Promise<ArtistObject[] | undefined> {
+  async getUserTopArtist(): Promise<SimplifiedArtistObject[] | undefined> {
     try {
       const res = await this.axios.get<GetUserTopArtistsResponse>(
         this.buildUrl(`me/top/artists?limit=8`),
@@ -82,6 +83,15 @@ class ApiService {
     } catch (ex) {
       console.log('err: ' + ex);
     }
+  }
+
+  async getArtist(id: string): Promise<ArtistObject | undefined> {
+    try {
+      const res = await this.axios.get<ArtistObject>(
+        this.buildUrl(`artists/${id}`),
+      );
+      return res.data;
+    } catch (ex) {}
   }
 
   private buildUrl(path: string): string {

@@ -6,6 +6,8 @@ const fonts = {
     lg: 16,
     sxl: 20,
     xl: 24,
+    xxl: 30,
+    xxxl: 40,
   },
   fontWeights: {
     light: '300',
