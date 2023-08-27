@@ -1,6 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+
 import { NavigationContainer } from '@react-navigation/native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import LogIn from '@core/screens/LogIn';
 import Home from '@core/screens/Home';
@@ -15,6 +18,27 @@ export type MainStackParams = {
 };
 
 const MainStack = createStackNavigator<MainStackParams>();
+
+const Tab = createMaterialBottomTabNavigator();
+
+const TabStack: React.FC = () => {
+  return (
+    <NavigationContainer independent={true}>
+      <Tab.Navigator barStyle={{ backgroundColor: '#000000', height: 90 }}>
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="home" color={color} size={26} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+};
 
 const RootStack = () => (
   <NavigationContainer independent={true}>
